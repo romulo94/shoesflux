@@ -1,58 +1,45 @@
-import React from 'react';
-
+import React, { Component } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
+import api from '../../services/api';
+import { formatPrice } from '../../util/format';
 
 import { ProductList } from './styles';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/sapatenis-casual-em-couro-sapatofran-mr-l-masculino/12/HAP-0149-012/HAP-0149-012_zoom1.jpg"
-          alt="shoes-01"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$ 129,99</span>
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={36} color="#FFF" />
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/sapatenis-sapatofran-elastico-masculino/04/HAP-0025-004/HAP-0025-004_zoom1.jpg"
-          alt="shoes-01"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$ 129,99</span>
+  async componentDidMount() {
+    const response = await api.get('/products');
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={36} color="#FFF" />
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price),
+    }));
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/sapatenis-lona-sapatofran-polo-masculino/03/HAP-0176-003/HAP-0176-003_zoom1.jpg"
-          alt="shoes-01"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$ 129,99</span>
+    this.setState({ products: data });
+  }
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={36} color="#FFF" />
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+  render() {
+    const { products } = this.state;
+    return (
+      <ProductList>
+        {products.map(product => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.title} />
+            <strong>{product.title} </strong>
+            <span>{product.priceFormatted} </span>
+
+            <button type="button">
+              <div>
+                <MdAddShoppingCart size={36} color="#FFF" />
+              </div>
+              <span>ADICIONAR AO CARRINHO</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
