@@ -1,5 +1,4 @@
 export function addToCartRequest(id) {
-  console.log('id---', id);
   return {
     type: '@cart/ADD_REQUEST',
     id,
