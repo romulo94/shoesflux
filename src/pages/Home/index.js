@@ -22,11 +22,14 @@ class Home extends Component {
       priceFormatted: formatPrice(product.price),
     }));
 
+    console.log('darta', response.data);
+
     this.setState({ products: data });
   }
 
   handleAddProduct = id => {
     const { addToCartRequest } = this.props;
+    console.log('id', id);
 
     addToCartRequest(id);
   };
@@ -34,6 +37,7 @@ class Home extends Component {
   render() {
     const { products } = this.state;
     const { amount } = this.props;
+    console.log(amount);
     return (
       <ProductList>
         {products.map(product => (
