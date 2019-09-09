@@ -6,6 +6,13 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
+
+  img {
+    transition: transform 0.25s;
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
 `;
 
 export const Cart = styled(Link)`
