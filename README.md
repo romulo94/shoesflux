@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0ad3c8d2-2772-4859-ae4a-c6f8dc371709/deploy-status)](https://app.netlify.com/sites/shoesfluxhooks/deploys)
+
 ## Available Scripts
 
 In the project directory, you can run:

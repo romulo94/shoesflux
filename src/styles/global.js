@@ -28,6 +28,12 @@ export default createGlobalStyle`
     max-width: 1020px;
     margin: 0 auto;
     padding: 0 28px 50px;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   button {
