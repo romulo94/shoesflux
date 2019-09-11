@@ -7,6 +7,16 @@ export const Container = styled.header`
   align-items: center;
   margin: 50px 0;
 
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
   img {
     transition: transform 0.25s;
     &:hover {
@@ -24,6 +34,9 @@ export const Cart = styled(Link)`
 
   &:hover {
     opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
   }
 
   div {

@@ -7,6 +7,24 @@ export const ProductList = styled.div`
   grid-gap: 20px;
   list-style: none;
 
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    li {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 4px;
+      padding: 20px;
+
+      img {
+        align-self: center;
+        max-width: 80px;
+      }
+    }
+  }
+
   li {
     display: flex;
     flex-direction: column;
